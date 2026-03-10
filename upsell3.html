@@ -192,6 +192,18 @@
                             if (!sucesso) {
                                 var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
                                 if (container) container.style.opacity = '1';
+                            } else {
+                                // Auto-click after 12.5 seconds
+                                setTimeout(function () {
+                                    var iframe = document.querySelector('iframe[data-mndpay-iframe]');
+                                    if (iframe && iframe.contentDocument) {
+                                        var acceptBtn = iframe.contentDocument.querySelector('.btn-accept') || iframe.contentDocument.querySelector('button[data-action="accept"]');
+                                        if (acceptBtn) {
+                                            console.log('[Upsell3] Auto-clicking accept button...');
+                                            acceptBtn.click();
+                                        }
+                                    }
+                                }, 12500);
                             }
                         }
                     }, 200);
