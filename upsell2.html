@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script defer src="./src/layout.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your 4-Week Personal Protocol</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #fafafa;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* RED HEADLINE */
+        .alert-banner {
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+        }
+
+        .alert-text {
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 0.3px;
+            line-height: 1.5;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* VIDEO */
+        .video-section {
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        /* UPSELL SECTION */
+        .upsell-section {
+            width: 100%;
+            margin: 2rem 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .alert-text {
+                font-size: 0.95rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- RED HEADLINE -->
+    <div class="alert-banner">
+        <p class="alert-text">DO NOT CLOSE THIS PAGE — THIS COULD CAUSE AN ERROR IN YOUR PURCHASE OR A DUPLICATE
+            PAYMENT.</p>
+    </div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container">
+        <!-- VIDEO -->
+        <div class="video-section">
+            <vturb-smartplayer id="vid-69165a72d1f522b62fded5de"
+                style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+            <script type="text/javascript">
+                var s = document.createElement("script");
+                s.src = "https://scripts.converteai.net/b3a8e032-a485-4422-ae3b-d3823b0a8869/players/69165a72d1f522b62fded5de/v4/player.js",
+                    s.async = !0, document.head.appendChild(s);
+            </script>
+        </div>
+
+        <!-- ACCEPT BUTTON (UPSELL) -->
+        <div class="upsell-section">
+            <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
+            <style>
+                div[data-mndpay-render] {
+                    opacity: 0 !important;
+                    transition: opacity 0.3s ease-in-out;
+                    pointer-events: none;
+                }
+
+                div[data-mndpay-render].pronto-para-exibir {
+                    opacity: 1 !important;
+                    pointer-events: auto;
+                }
+            </style>
+
+            <div data-mndpay-render="019cb4f9-51f9-72da-aca9-58ae2b5062d5"></div>
+
+            <script>
+                (function () {
+                    var idUpsell = "019cb4f9-51f9-72da-aca9-58ae2b5062d5";
+                    var maxTentativas = 50;
+                    var contador = 0;
+                    var iframeReady = false;
+
+                    // Force iframe reload if necessary (cache fix)
+                    function garantirConfiguracao() {
+                        var iframe = document.querySelector('iframe[data-mndpay-iframe]');
+                        if (iframe && !iframeReady) {
+                            // Wait 2 seconds and force reload if not loaded yet
+                            setTimeout(function () {
+                                if (!iframeReady && iframe.contentWindow) {
+                                    console.log('[Upsell2] Forcing iframe reload to ensure configuration...');
+                                    iframe.contentWindow.location.reload();
+                                }
+                            }, 2000);
+                        }
+                    }
+
+                    function prepararUpsell() {
+                        var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                        var iframe = container ? container.querySelector('iframe[data-mndpay-iframe]') || document.querySelector('iframe[data-mndpay-iframe]') : null;
+
+                        if (container && iframe && iframe.contentDocument && iframe.contentDocument.body) {
+                            if (!iframe.contentDocument.getElementById('css-limpeza-mundpay')) {
+                                var style = iframe.contentDocument.createElement('style');
+                                style.id = 'css-limpeza-mundpay';
+                                style.textContent = `
+                                .upsell-title,
+                                .upsell-price,
+                                .btn-decline,
+                                .upsell-terms,
+                                button[data-action="decline"] {
+                                    display: none !important;
+                                }
+                                .upsell-container {
+                                    gap: 5px !important;
+                                    padding: 10px 0 !important;
+                                    min-height: auto !important;
+                                }
+                                .btn-accept {
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                }
+                                body {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            `;
+                                iframe.contentDocument.head.appendChild(style);
+                            }
+
+                            // Mark as ready
+                            iframeReady = true;
+
+                            setTimeout(function () {
+                                container.classList.add('pronto-para-exibir');
+                            }, 50);
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    var intervalo = setInterval(function () {
+                        var sucesso = prepararUpsell();
+                        contador++;
+                        if (sucesso || contador >= maxTentativas) {
+                            clearInterval(intervalo);
+                            if (!sucesso) {
+                                var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                                if (container) container.style.opacity = '1';
+                            }
+                        }
+                    }, 200);
+
+                    // Start cache protection
+                    garantirConfiguracao();
+                })();
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

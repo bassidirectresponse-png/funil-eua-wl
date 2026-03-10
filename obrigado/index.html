@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Your Order is Confirmed</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-dusty: #d4748c;
+            --gold: #c9a96e;
+            --white: #ffffff;
+            --light-beige: #faf8f5;
+            --dark-gray: #2d2d2d;
+            --gray-text: #666666;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--light-beige) 0%, #fff 100%);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 650px;
+            width: 100%;
+        }
+
+        .thank-you-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 4rem 3rem;
+            box-shadow: 0 15px 50px rgba(212, 116, 140, 0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Subtle top border accent */
+        .thank-you-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--pink-dusty), var(--gold));
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(201, 169, 110, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .icon-wrapper svg {
+            width: 40px;
+            height: 40px;
+            stroke: var(--gold);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--gray-text);
+            margin-bottom: 3rem;
+            font-weight: 400;
+        }
+
+        .details-box {
+            background-color: var(--light-beige);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+            border: 1px solid rgba(201, 169, 110, 0.2);
+        }
+
+        .details-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--pink-dusty);
+            margin-bottom: 1rem;
+        }
+
+        .details-box p {
+            color: var(--gray-text);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .details-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .support-section {
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+        }
+
+        .support-text {
+            font-size: 0.9rem;
+            color: var(--gray-text);
+            margin-bottom: 1rem;
+        }
+
+        .support-email {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: color 0.3s ease;
+        }
+
+        .support-email:hover {
+            color: var(--pink-dusty);
+            transform: scale(1.02);
+        }
+
+        .support-email svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        @media (max-width: 600px) {
+            .thank-you-card {
+                padding: 3rem 1.5rem;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .details-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="thank-you-card">
+
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+
+            <h1>Order Confirmed</h1>
+
+            <p class="subtitle">
+                Thank you so much! Your purchase was completely successful.
+            </p>
+
+            <div class="details-box">
+                <h2>What happens next?</h2>
+                <p>We've just sent an email containing all the exclusive access instructions and your product details.
+                </p>
+                <p>Please check your inbox (and the spam/junk folder, just in case) within the next 5 to 10 minutes.</p>
+            </div>
+
+            <div class="support-section">
+                <p class="support-text">Do you have any questions or need assistance?</p>
+                <a href="mailto:basseven.automacao@gmail.com" class="support-email">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    basseven.automacao@gmail.com
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

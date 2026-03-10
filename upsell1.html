@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Pink Salt Burn Protocol - Exclusive Access</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink-dusty: #d4748c;
+            --gold: #c9a96e;
+            --white: #ffffff;
+            --light-beige: #faf8f5;
+            --dark-gray: #2d2d2d;
+            --red-alert: #e63946;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, var(--light-beige) 0%, #fff 100%);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Alert Banner */
+        .alert-banner {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .alert-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--red-alert);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            animation: pulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.7;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.03);
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Main Card */
+        .main-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(212, 116, 140, 0.15);
+            text-align: center;
+        }
+
+        .decorative-line {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--pink-dusty), var(--gold));
+            margin: 0 auto 2rem;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--pink-dusty);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--pink-dusty) 0%, var(--gold) 100%);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+            animation: glow-pulse 2s ease-in-out infinite;
+            cursor: pointer;
+            border: none;
+            margin: 2rem 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(201, 169, 110, 0.6);
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 8px 25px rgba(201, 169, 110, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 8px 35px rgba(201, 169, 110, 0.7);
+            }
+        }
+
+        /* Upsell Block */
+        .upsell-container {
+            margin: 3rem 0;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .upsell-loader {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid var(--light-beige);
+            border-top: 4px solid var(--pink-dusty);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .loader-text {
+            margin-top: 1rem;
+            color: var(--pink-dusty);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .alert-text {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .main-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .alert-text {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Alert Banner -->
+    <div class="alert-banner">
+        <p class="alert-text">Do not close this page – This could cause an error in processing your order.</p>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Main Card -->
+        <div class="main-card">
+            <div class="decorative-line"></div>
+
+            <h1>Congratulations! You just unlocked the 10X Results Accelerator.</h1>
+
+            <p class="subtitle">
+                Click the button below to unlock your access and get a real, fast, and 100% effective transformation,
+                scientifically proven.
+            </p>
+
+            <a href="#unlock" class="cta-button">
+                🔓 Unlock my access now
+            </a>
+        </div>
+
+        <!-- Upsell Block -->
+        <div class="upsell-container">
+            <div class="upsell-loader" id="upsellLoader">
+                <div class="loader-spinner"></div>
+                <p class="loader-text">Loading your exclusive offer...</p>
+            </div>
+
+            <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
+            <style>
+                div[data-mndpay-render] {
+                    opacity: 0 !important;
+                    transition: opacity 0.3s ease-in-out;
+                    pointer-events: none;
+                }
+
+                div[data-mndpay-render].pronto-para-exibir {
+                    opacity: 1 !important;
+                    pointer-events: auto;
+                }
+            </style>
+
+            <div data-mndpay-render="019cb4f6-8fea-716e-a0a8-9f186556c8c7"></div>
+
+            <script>
+                (function () {
+                    var idUpsell = "019cb4f6-8fea-716e-a0a8-9f186556c8c7";
+                    var maxTentativas = 50;
+                    var contador = 0;
+                    var iframeReady = false;
+
+                    // Force iframe reload if necessary (cache fix)
+                    function garantirConfiguracao() {
+                        var iframe = document.querySelector('iframe[data-mndpay-iframe]');
+                        if (iframe && !iframeReady) {
+                            // Wait 2 seconds and force reload if not loaded yet
+                            setTimeout(function () {
+                                if (!iframeReady && iframe.contentWindow) {
+                                    console.log('[Upsell1] Forcing iframe reload to ensure configuration...');
+                                    iframe.contentWindow.location.reload();
+                                }
+                            }, 2000);
+                        }
+                    }
+
+                    function prepararUpsell() {
+                        var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                        var iframe = container ? container.querySelector('iframe[data-mndpay-iframe]') || document.querySelector('iframe[data-mndpay-iframe]') : null;
+
+                        if (container && iframe && iframe.contentDocument && iframe.contentDocument.body) {
+                            if (!iframe.contentDocument.getElementById('css-limpeza-mundpay')) {
+                                var style = iframe.contentDocument.createElement('style');
+                                style.id = 'css-limpeza-mundpay';
+                                style.textContent = `
+                                .upsell-title, 
+                                .upsell-price, 
+                                .btn-decline, 
+                                .upsell-terms,
+                                button[data-action="decline"] {
+                                    display: none !important;
+                                }
+                                .upsell-container {
+                                    gap: 5px !important;
+                                    padding: 10px 0 !important;
+                                    min-height: auto !important;
+                                }
+                                .btn-accept {
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                }
+                                body {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            `;
+                                iframe.contentDocument.head.appendChild(style);
+                            }
+
+                            // Mark as ready
+                            iframeReady = true;
+
+                            setTimeout(function () {
+                                container.classList.add('pronto-para-exibir');
+                            }, 50);
+
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    var intervalo = setInterval(function () {
+                        var sucesso = prepararUpsell();
+                        contador++;
+
+                        if (sucesso || contador >= maxTentativas) {
+                            clearInterval(intervalo);
+                            if (!sucesso) {
+                                var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                                if (container) container.style.opacity = '1';
+                            }
+                        }
+                    }, 200);
+
+                    // Start cache protection
+                    garantirConfiguracao();
+                })();
+            </script>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 The Pink Salt Burn Protocol. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Hide loader when upsell content loads
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.addedNodes.length) {
+                    const upsellBlock = document.querySelector('[data-mndpay-render]');
+                    if (upsellBlock && upsellBlock.children.length > 0) {
+                        document.getElementById('upsellLoader').style.display = 'none';
+                        observer.disconnect();
+                    }
+                }
+            });
+        });
+
+        const upsellBlock = document.querySelector('[data-mndpay-render]');
+        if (upsellBlock) {
+            observer.observe(upsellBlock, { childList: true, subtree: true });
+        }
+
+        // Timeout fallback - hide loader after 5 seconds regardless
+        setTimeout(() => {
+            const loader = document.getElementById('upsellLoader');
+            if (loader) loader.style.display = 'none';
+        }, 5000);
+    </script>
+</body>
+
+</html>
