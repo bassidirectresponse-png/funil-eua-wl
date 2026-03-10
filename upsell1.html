@@ -260,7 +260,107 @@
             </div>
 
             <script src="https://upsell.mundpay.com/script-v2.js" defer async></script>
+
+            <style>
+                div[data-mndpay-render] {
+                    opacity: 0 !important;
+                    transition: opacity 0.3s ease-in-out;
+                    pointer-events: none;
+                }
+
+                div[data-mndpay-render].pronto-para-exibir {
+                    opacity: 1 !important;
+                    pointer-events: auto;
+                }
+            </style>
+
             <div data-mndpay-render="019cd55e-fc50-72a9-847d-f5bc3610fbf9"></div>
+
+            <script>
+                (function () {
+                    var idUpsell = "019cd55e-fc50-72a9-847d-f5bc3610fbf9";
+                    var maxTentativas = 50;
+                    var contador = 0;
+                    var iframeReady = false;
+
+                    // Force iframe reload if necessary (cache fix)
+                    function garantirConfiguracao() {
+                        var iframe = document.querySelector('iframe[data-mndpay-iframe]');
+                        if (iframe && !iframeReady) {
+                            // Wait 2 seconds and force reload if not loaded yet
+                            setTimeout(function () {
+                                if (!iframeReady && iframe.contentWindow) {
+                                    console.log('[Upsell1] Forcing iframe reload to ensure configuration...');
+                                    iframe.contentWindow.location.reload();
+                                }
+                            }, 2000);
+                        }
+                    }
+
+                    function prepararUpsell() {
+                        var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                        var iframe = container ? container.querySelector('iframe[data-mndpay-iframe]') || document.querySelector('iframe[data-mndpay-iframe]') : null;
+
+                        if (container && iframe && iframe.contentDocument && iframe.contentDocument.body) {
+                            if (!iframe.contentDocument.getElementById('css-limpeza-mundpay')) {
+                                var style = iframe.contentDocument.createElement('style');
+                                style.id = 'css-limpeza-mundpay';
+                                style.textContent = `
+                                .upsell-title, 
+                                .upsell-price, 
+                                .btn-decline, 
+                                .upsell-terms,
+                                button[data-action="decline"] {
+                                    display: none !important;
+                                }
+                                .upsell-container {
+                                    gap: 5px !important;
+                                    padding: 10px 0 !important;
+                                    min-height: auto !important;
+                                }
+                                .btn-accept {
+                                    width: 100% !important;
+                                    margin: 0 !important;
+                                }
+                                body {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            `;
+                                iframe.contentDocument.head.appendChild(style);
+                            }
+
+                            // Mark as ready
+                            iframeReady = true;
+
+                            setTimeout(function () {
+                                container.classList.add('pronto-para-exibir');
+                            }, 50);
+
+                            return true;
+                        }
+                        return false;
+                    }
+
+                    var intervalo = setInterval(function () {
+                        var sucesso = prepararUpsell();
+                        contador++;
+
+                        if (sucesso || contador >= maxTentativas) {
+                            clearInterval(intervalo);
+                            if (!sucesso) {
+                                var container = document.querySelector('div[data-mndpay-render="' + idUpsell + '"]');
+                                if (container) container.style.opacity = '1';
+                            }
+                        }
+                    }, 200);
+
+                    // Start cache protection
+                    garantirConfiguracao();
+                })();
+            </script>
         </div>
     </div>
 
