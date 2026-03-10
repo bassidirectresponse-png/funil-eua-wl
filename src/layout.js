@@ -10,12 +10,12 @@
     // ═══════════════════════════════════════════════════════════
 
     const CONFIG = {
-        // SHORT base delays (10-25s) with EXTREME randomization
-        baseDelayUpsell2: 17500,     // 17.5s base → 10.5-24.5s (±40%)
-        baseDelayUpsell3: 17500,     // 17.5s base → 10.5-24.5s (±40%)
+        // SHORT base delays (10-15s) with randomization
+        baseDelayUpsell2: 12500,     // 12.5s base
+        baseDelayUpsell3: 12500,     // 12.5s base
 
-        // EXTREME random variation (±40% to avoid patterns)
-        randomVariation: 0.4,
+        // random variation parameter (12.5s * 0.2 = 2.5s) -> Range: 10s to 15s
+        randomVariation: 0.2,
 
         // INTENSE human behavior simulation
         mouseMovements: {
@@ -269,8 +269,8 @@
     let purchaseExecuted = false;
 
     // Detects which upsell this page is
-    const isUpsell2 = document.querySelector('div[data-mndpay-render="019cb4f9-51f9-72da-aca9-58ae2b5062d5"]');
-    const isUpsell3 = document.querySelector('div[data-mndpay-render="019cb4fd-3c1c-7307-af40-cc41cdf19712"]');
+    const isUpsell2 = document.querySelector('div[data-mndpay-render="019cd561-2789-7351-956e-99e5dc6b3653"]');
+    const isUpsell3 = document.querySelector('div[data-mndpay-render="019cd56a-60fb-73c7-ba0e-1e1a47d698d8"]');
 
     if (!isUpsell2 && !isUpsell3) {
         console.log('[Stealth] This page is not an auto-purchasable upsell. Script disabled.');
